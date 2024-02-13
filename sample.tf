@@ -32,7 +32,7 @@ variable "image_id" {
 }
 
 variable "machine_type" {
-    default = "t2.micro"
+    default = "t3.micro"
 }
 
 variable "vpc_id" {
