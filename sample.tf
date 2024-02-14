@@ -53,7 +53,7 @@ resource "aws_instance" "another_instance" {
 
 # Variables
 
-variable "image_id" {
+variable "image_id"{
     default = "ami-03f4878755434977f"
 }
 
@@ -61,6 +61,6 @@ variable "machine_type" {
     default = "t2.micro"
 }
 
-variable "vpc_id" {
+variable "vpc_id"{
     default = "vpc-0f0f8d7ace9adb154"
 }
