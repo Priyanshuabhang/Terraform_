@@ -1,5 +1,5 @@
 provider "aws" {
-     region = "eu-west-3"
+     region = "ap-south-1"
 }
 
 # Create Security Group
