@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_iam_user" "my_user" {
-  name = "my-user-help"  
+  name = "my-user"  
 
   tags = {
     Name = "My User"
