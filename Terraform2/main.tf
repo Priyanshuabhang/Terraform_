@@ -1,7 +1,8 @@
 provider "aws" {
-    region = "us-east-1"
+    region = "eu-west-3"
 }
 
+# Create vpc 
 resource "aws_vpc" "my_vpc" {
     cidr_block = var.vpc_cidr
     tags = {
@@ -10,6 +11,7 @@ resource "aws_vpc" "my_vpc" {
     }
 }
 
+# Create Private Subnet
 resource "aws_subnet" "private_subnet" {
     vpc_id     = aws_vpc.my_vpc.id
     cidr_block = var.private_subnet_cidr
@@ -20,6 +22,7 @@ resource "aws_subnet" "private_subnet" {
     }
 }
 
+# Create Public Subnet
 resource "aws_subnet" "public_subnet" {
     vpc_id     = aws_vpc.my_vpc.id
     cidr_block = var.public_subnet_cidr
@@ -30,6 +33,7 @@ resource "aws_subnet" "public_subnet" {
     }
 }
 
+# Create Internet Getway
 resource "aws_internet_gateway" "my_igw" {
   vpc_id = aws_vpc.my_vpc.id
 
@@ -39,12 +43,14 @@ resource "aws_internet_gateway" "my_igw" {
   }
 }
 
+# Create Rout Table
 resource "aws_route" "igw_route" {
   route_table_id            = aws_vpc.my_vpc.default_route_table_id
   destination_cidr_block    = "0.0.0.0/0"
   gateway_id = aws_internet_gateway.my_igw.id
 }
 
+# Create Security Group
 resource "aws_security_group" "my_sg" {
     name = "${var.project}-sg"
     description = "allow http and ssh"
@@ -70,6 +76,7 @@ resource "aws_security_group" "my_sg" {
     depends_on = [aws_internet_gateway.my_igw]
 }
 
+# Lounch instance
 resource "aws_instance" "instance_1" {
     ami = var.image_id
     instance_type = var.instance_type
