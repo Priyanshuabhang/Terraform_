@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-unique-bucket-name"  # Set your desired bucket name
+  bucket = "my-bucket-name"  # Set your desired bucket name
 
   # Uncomment the below line if you want to enforce encryption on the bucket
   # server_side_encryption_configuration {
