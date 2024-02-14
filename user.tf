@@ -4,14 +4,11 @@ provider "aws" {
 }
 
 resource "aws_iam_user" "my_user" {
-  name = "my-user-name"  # Set your desired username
+  name = "my-user-help"  
 
   tags = {
     Name = "My User"
   }
 }
 
-resource "aws_iam_user_policy_attachment" "my_user_attachment" {
-  user       = aws_iam_user.my_user.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"  # Example policy, replace with desired ARN
-}
+
