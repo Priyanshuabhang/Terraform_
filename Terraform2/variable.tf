@@ -19,7 +19,7 @@ variable "env" {
 }
 
 variable "image_id" {
-    default = "ami-0c7217cdde317cfec"
+    default = "ami-089c89a80285075f7"
 }
 variable "instance_type" {
     default = "t2.micro"
